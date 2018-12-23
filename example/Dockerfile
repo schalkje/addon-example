@@ -2,6 +2,9 @@ ARG BUILD_FROM=hassioaddons/base:2.3.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
+# Set workdir
+WORKDIR /opt
+
 # Copy root filesystem
 COPY rootfs /
 
@@ -10,8 +13,9 @@ RUN apk add --no-cache \
     coreutils=8.29-r2 \
     wget=1.19.5-r0
 
-# Scrip to run after startup
-CMD ["/usr/bin/run.sh"]
+
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Build arugments
 ARG BUILD_ARCH

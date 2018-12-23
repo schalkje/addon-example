@@ -1,4 +1,3 @@
-#!/usr/bin/execlineb -S0
 # ==============================================================================
 # Community Hass.io Add-ons: Copied from MagicMirror²
 # Take down the S6 supervision tree when NGINX fails
