@@ -8,14 +8,30 @@ WORKDIR /opt
 # Copy root filesystem
 COPY rootfs /
 
-# Setup base
-RUN apk add --no-cache \
-    coreutils=8.29-r2 \
-    wget=1.19.5-r0
-
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Setup base
+RUN apk add --no-cache \
+        coreutils=8.29-r2 \
+        wget=1.19.5-r0 \
+    && apk add --no-cache \
+        apk-tools=2.10.1-r0 \
+        bash=4.4.19-r1 \
+        busybox=1.28.4-r1 \
+        ca-certificates=20171114-r3 \
+        curl=7.61.1-r1 \
+        jq=1.6_rc1-r1 \
+        musl-utils=1.1.19-r10 \
+        musl=1.1.19-r10 \
+        tzdata=2018f-r0     \
+    && mkdir -p /etc/fix-attrs.d \
+    && mkdir -p /etc/services.d \
+    && apk del --purge .build-dependencies 
+
+# Entrypoint & CMD (copied from add-on base)
+# ENTRYPOINT ["/init"]
 
 # Build arugments
 ARG BUILD_ARCH
