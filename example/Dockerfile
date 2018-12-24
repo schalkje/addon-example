@@ -1,6 +1,15 @@
-ARG BUILD_FROM=hassioaddons/base:2.3.0
+ARG BUILD_FROM=alpine:3.8
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
+
+# Environment variables
+ENV \
+    HOME="/root" \
+    LANG="C.UTF-8" \
+    PS1="$(whoami)@$(hostname):$(pwd)$ " \
+    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
+    S6_CMD_WAIT_FOR_SERVICES=1 \
+    TERM="xterm"
 
 # Set workdir
 WORKDIR /opt
@@ -10,7 +19,7 @@ COPY rootfs /
 
 
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 
 # Setup base
 RUN apk add --no-cache \
