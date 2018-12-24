@@ -1,4 +1,3 @@
-#!/usr/bin/with-contenv bash
 # ==============================================================================
 # Community Hass.io Add-ons: 
 # base don: AirSonos
