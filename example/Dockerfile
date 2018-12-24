@@ -25,10 +25,12 @@ RUN apk add --no-cache \
         jq=1.6_rc1-r1 \
         musl-utils=1.1.19-r10 \
         musl=1.1.19-r10 \
-        tzdata=2018f-r0     \
-    && mkdir -p /etc/fix-attrs.d \
-    && mkdir -p /etc/services.d \
-    && apk del --purge .build-dependencies 
+        tzdata=2018f-r0    
+        
+    #      \
+    # && mkdir -p /etc/fix-attrs.d \
+    # && mkdir -p /etc/services.d \
+    # && apk del --purge .build-dependencies 
 
 # Entrypoint & CMD (copied from add-on base)
 # ENTRYPOINT ["/init"]
