@@ -33,7 +33,7 @@ RUN apk add --no-cache \
     # && apk del --purge .build-dependencies 
 
 # Entrypoint & CMD (copied from add-on base)
-# ENTRYPOINT ["/init"]
+ENTRYPOINT ["/init"]
 
 # Build arugments
 ARG BUILD_ARCH
