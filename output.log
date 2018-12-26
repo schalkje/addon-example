@@ -1,3 +1,50 @@
+
+############################################################################################################
+### v0.1.2
+
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] 00-banner.sh: executing... 
+-----------------------------------------------------------
+ Hass.io Add-on: Example (service) v0.1.2
+ Example add-on by Community Hass.io Add-ons as a service
+ From: Local add-ons
+ By: you
+-----------------------------------------------------------
+ armhf / HassOS 1.13 / HA 0.84.6 / SU 141 / stable
+-----------------------------------------------------------
+[cont-init.d] 00-banner.sh: exited 0.
+[cont-init.d] 01-log-level.sh: executing... 
+Log level is set to INFO
+[cont-init.d] 01-log-level.sh: exited 0.
+[cont-init.d] 02-updates.sh: executing... 
+INFO: You are running the latest version of this add-on
+[cont-init.d] 02-updates.sh: exited 0.
+[cont-init.d] 20-run.sh: executing... 
+exec: fatal: unable to exec bash
+: No such file or directory
+[cont-init.d] 20-run.sh: exited 111.
+[cont-finish.d] executing container finish scripts...
+[cont-finish.d] 99-message.sh: executing... 
+-----------------------------------------------------------
+                Oops! Something went wrong.
+ 
+ We are so sorry, but something went terribly wrong when
+ starting or running this add-on.
+ 
+ Be sure to check the log above, line by line, for hints.
+-----------------------------------------------------------
+[cont-finish.d] 99-message.sh: exited 0.
+[cont-finish.d] done.
+[s6-finish] syncing disks.
+[s6-finish] sending all processes the TERM signal.
+
+############################################################################################################
+### v0.1.1
+
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
 [s6-init] ensuring user provided files have correct perms...exited 0.
 [fix-attrs.d] applying ownership & permissions fixes...

@@ -6,7 +6,6 @@ FROM ${BUILD_FROM}
 ENV \
     HOME="/root" \
     LANG="C.UTF-8" \
-    PS1="$(whoami)@$(hostname):$(pwd)$ " \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_CMD_WAIT_FOR_SERVICES=1 \
     TERM="xterm"
@@ -14,12 +13,15 @@ ENV \
 # Set workdir
 WORKDIR /opt
 
-# Copy root filesystem
-COPY rootfs /
-
-
 # Set shell
-SHELL ["/bin/ash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+
+# Build arugments
+ARG BUILD_ARCH
+ARG BUILD_DATE
+ARG BUILD_REF
+ARG BUILD_VERSION
 
 # Setup base
 RUN apk add --no-cache \
@@ -41,14 +43,10 @@ RUN apk add --no-cache \
     # && mkdir -p /etc/services.d \
     # && apk del --purge .build-dependencies 
 
-# Entrypoint & CMD (copied from add-on base)
-ENTRYPOINT ["/init"]
 
-# Build arugments
-ARG BUILD_ARCH
-ARG BUILD_DATE
-ARG BUILD_REF
-ARG BUILD_VERSION
+# Copy root filesystem
+COPY rootfs /
+
 
 # Labels
 LABEL \
